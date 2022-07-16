@@ -96,6 +96,9 @@ MonoBehaviour:
     - FolderC_Label_1
     - FolderC_Label_2
     - FoloderA
+    - Prefix_FoloderD_Suffix
+    - Custom_Label_2
+    - FoloderC
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 798acdfb07b0a5449ac694f6c9635db7, type: 2}

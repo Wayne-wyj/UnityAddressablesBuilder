@@ -10,28 +10,22 @@ namespace Utility.Assetframe
 {
     public sealed class AssetsManager : Singleton<AssetsManager>
     {
-        public string RootBundleURL
-        {
-            get;
-            private set;
-        }
-
         public Action OnAssetsManagerReady
         {
             set;
             get;
         }
 
-        #region 初始化
+        #region Initialize
 
         /// <summary>
         /// 整体资源管理器初始化
         /// </summary>
         /// <param name="onAssetLoaded"></param>
-        public void InitAssetManager(Action onAssetLoaded)
+        public void InitAssetManager(Action onInitFinish)
         {
             //设置加载回调
-            OnAssetsManagerReady = onAssetLoaded;
+            OnAssetsManagerReady = onInitFinish;
             //遍历Group,获取name
             Addressables.InitializeAsync().Completed += handler =>
             {
@@ -39,6 +33,7 @@ namespace Utility.Assetframe
                 foreach (var key in  handler.Result.Keys)
                 {
                     string name = key.ToString();
+                    //规则上，EntryName必须包含后缀 .XXXXX
                     if(!name.Contains("."))
                         continue;
                     AssetNames.Add(name);
@@ -54,9 +49,9 @@ namespace Utility.Assetframe
             OnAssetsManagerReady = null;
         }
 
-        #endregion 初始化
+        #endregion 
 
-        #region 加载
+        #region Load
         
         private HashSet<string> AssetNames=new HashSet<string>();
 
@@ -66,13 +61,13 @@ namespace Utility.Assetframe
         }
         
         /// <summary>
-        /// 创建预制体资源
+        /// 加载预制体资源
         /// </summary>
         /// <param name="assetName"></param>
         /// <param name="callback"></param>
         /// <param name="userData"></param>
         /// <param name="defaultParent"></param>
-        public void CreatePrefabTask(string assetName, OnPrefabLoaded callback, object userData,Transform defaultParent=null)
+        public void CreatePrefabTask(string assetName, OnPrefabLoaded callback, object userData=null,Transform defaultParent=null)
         {
             if (!ContainsAsset(assetName))
             {
@@ -93,7 +88,7 @@ namespace Utility.Assetframe
         }
         
         /// <summary>
-        /// 创建非预制体,非Sprite资源（Texture,Scene,Config....）
+        /// 加载非预制体,非Sprite资源（Texture,Scene,Config....）
         /// </summary>
         /// <param name="assetName"></param>
         /// <param name="callback"></param>
@@ -121,7 +116,7 @@ namespace Utility.Assetframe
         }
 
         /// <summary>
-        /// 根据AssetReference创建Task,避免不同Referrence指向同个资源的问题
+        /// 根据AssetReference创建Task,避免不同AssetReference的实例指向同个资源的问题
         /// </summary>
         /// <param name="reference"></param>
         /// <param name="callback"></param>
@@ -130,7 +125,12 @@ namespace Utility.Assetframe
             return reference.LoadAssetAsyncIfValid(callback);
         }
         
-      
+        /// <summary>
+        /// 加载Sprite
+        /// </summary>
+        /// <param name="assetName"></param>
+        /// <param name="callback"></param>
+        /// <param name="userData"></param>
         public void CreateSpriteTask(string assetName, OnSpriteLoaded callback, object userData)
         {
             if (!ContainsAsset(assetName))
@@ -154,7 +154,7 @@ namespace Utility.Assetframe
         }
         
         /// <summary>
-        /// 根据AssetReference创建Task
+        /// 加载Sprite,根据AssetReference创建Task,避免不同AssetReference的实例指向同个资源的问题
         /// </summary>
         /// <param name="reference"></param>
         /// <param name="callback"></param>
@@ -167,9 +167,6 @@ namespace Utility.Assetframe
     }
     
     public delegate void OnAssetLoaded(UnityEngine.Object asset, object userData);
-    
-    public delegate void OnAssetReferrenceLoaded(AsyncOperationHandle<Object> handler);
-
     
     public delegate void OnPrefabLoaded(UnityEngine.GameObject go, object userData);
 

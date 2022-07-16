@@ -52,3 +52,4 @@ UnityEngine.TestRunner.csproj
 UnityEngine.UI.csproj
 UnityEngine.UI.Tests.csproj
 ProjectSettings/RiderScriptEditorPersistedState.asset
+obj

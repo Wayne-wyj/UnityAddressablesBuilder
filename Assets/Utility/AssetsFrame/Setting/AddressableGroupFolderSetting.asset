@@ -15,7 +15,7 @@ MonoBehaviour:
   Settings:
   - Group: {fileID: 11400000, guid: 360c88c9e5da5ee40817954f12245b02, type: 2}
     FolderSettings:
-    - Title: 
+    - Title: No Label No Filter
       LabelType: 0
       Folders:
       - Reference:
@@ -25,21 +25,9 @@ MonoBehaviour:
         SuffixLabelName: Test_Sub
         PreviewLabelName: 
       SuffixFilter: 0
-  - Group: {fileID: 11400000, guid: effd178903ae90b449012691ae2829b8, type: 2}
-    FolderSettings:
-    - Title: 
-      LabelType: 3
-      Folders:
-      - Reference:
-          GUID: e336bbb07d08a1c45ad1e9aeb2ff2d81
-        CustomLabelName: FolderB
-        PrefixLabelName: 
-        SuffixLabelName: 
-        PreviewLabelName: FolderB
-      SuffixFilter: 0
   - Group: {fileID: 11400000, guid: ab7d25c01af3f2943beed29d944e8878, type: 2}
     FolderSettings:
-    - Title: 
+    - Title: 'Label :  Folder'
       LabelType: 1
       Folders:
       - Reference:
@@ -49,13 +37,47 @@ MonoBehaviour:
         SuffixLabelName: 
         PreviewLabelName: FolderC_Label_1
       SuffixFilter: 0
-    - Title: 
-      LabelType: 1
+    - Title: 'Label :  Prefix & Suffix'
+      LabelType: 2
+      Folders:
+      - Reference:
+          GUID: 274de3895b2ee664e97e117db0dbe282
+        CustomLabelName: 
+        PrefixLabelName: Prefix_
+        SuffixLabelName: _Suffix
+        PreviewLabelName: Prefix_FoloderD_Suffix
+      SuffixFilter: 0
+    - Title: 'Label :  Custom'
+      LabelType: 3
       Folders:
       - Reference:
           GUID: edb36311a8527764ca7a9efa039c484d
-        CustomLabelName: 
+        CustomLabelName: Custom_Label_2
         PrefixLabelName: 
         SuffixLabelName: 
-        PreviewLabelName: FolderC_Label_2
+        PreviewLabelName: Custom_Label_2
+      SuffixFilter: 0
+  - Group: {fileID: 11400000, guid: effd178903ae90b449012691ae2829b8, type: 2}
+    FolderSettings:
+    - Title: 'Filter : Prefab'
+      LabelType: 0
+      Folders:
+      - Reference:
+          GUID: e336bbb07d08a1c45ad1e9aeb2ff2d81
+        CustomLabelName: FolderB
+        PrefixLabelName: 
+        SuffixLabelName: 
+        PreviewLabelName: 
+      SuffixFilter: 1
+  - Group: {fileID: 11400000, guid: b373434debbc6c64faadd2fb2a7b6cd8, type: 2}
+    FolderSettings:
+    - Title: Remote NoLabel
+      LabelType: 0
+      Folders:
+      - Reference:
+          GUID: 8e313b5db8feee444afec49a30fa1bd1
+        CustomLabelName: 
+        PrefixLabelName: Prefix_
+        SuffixLabelName: _Suffix
+        PreviewLabelName: 
       SuffixFilter: 0

@@ -16,7 +16,32 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: d40ff7ce4d22a314aa0a3fc69cdef218
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 494c40bfb5b00b649b7a843d034107fb
+    m_Address: Cube_Local_Gray_4.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Custom_Label_2
+  - m_GUID: 115ebc22c5dcc3c41abb6aee5e294a62
+    m_Address: Cube_Local_Gray_3.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Custom_Label_2
+  - m_GUID: 6bb59be59838aec4c988c485161b2da9
+    m_Address: Cube_Remote_Yellow.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Prefix_FoloderD_Suffix
+  - m_GUID: f621b09b18bdd3547a469170ec393777
+    m_Address: Cube_Local_Gray_2.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FolderC_Label_1
+  - m_GUID: 2049e26bb26091f43b791e9a8382d0e9
+    m_Address: Cube_Local_Gray_1.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - FolderC_Label_1
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b3d7d7549ccc0f54ea96fd1b3696b794, type: 2}
   m_SchemaSet:

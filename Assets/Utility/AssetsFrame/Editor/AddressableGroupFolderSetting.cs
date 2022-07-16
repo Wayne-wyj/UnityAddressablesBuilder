@@ -18,7 +18,7 @@ namespace Utility.Assetframe.Editor
     public struct GroupFolderSetting
     {
         public AddressableAssetGroup Group;
-        [FormerlySerializedAs("PathSettings")] public FolderSetting[] FolderSettings;
+        public FolderSetting[] FolderSettings;
 
         public string GroupName
         {
@@ -111,8 +111,8 @@ namespace Utility.Assetframe.Editor
             {
                 var hashCode = Reference.GetHashCode();
                 hashCode = (hashCode * 397) ^ (CustomLabelName != null ? CustomLabelName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (PrefixLabelName != null ? PrefixLabelName.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (SuffixLabelName != null ? SuffixLabelName.GetHashCode() : 0);
+                hashCode += (hashCode * 397) ^ (PrefixLabelName != null ? PrefixLabelName.GetHashCode() : 0);
+                hashCode += (hashCode * 397) ^ (SuffixLabelName != null ? SuffixLabelName.GetHashCode() : 0);
                 return hashCode;
             }
         }
@@ -124,9 +124,9 @@ namespace Utility.Assetframe.Editor
         /// <summary>
         /// 带Flag枚举 的默认选项，逻辑中默认设置为Prefab
         /// </summary>
-        Prefab = 1<<0,
-        Png = 1<<1,
-        Material = 1<<2,
+        prefab = 1<<0,
+        png = 1<<1,
+        mat = 1<<2,
     }
 
     /// <summary>

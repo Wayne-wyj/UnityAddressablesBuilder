@@ -42,40 +42,22 @@ namespace Utility.Assetframe.Editor
         /// <summary>
         /// 标记所有的Addressble
         /// </summary>
-        [MenuItem("Tools/Mark or Build/Mark Asset(For Editor)")]
+        [MenuItem("Tools/Addressables/Mark or Build/Mark Asset(For Editor)")]
         public static void MarkAllAssets()
         {
             CheckSettingsAndGroup();
             //RawBundle,Mark
-            MarkAllRawBundlesToGroup();
+            MarkAssetsIntoGroup();
             //保存配置
             AssetDatabase.SaveAssets();
-            //运行时
-            if (Application.isPlaying)
-            {
-                AssetsManager.Instance.InitAssetManager(null);
-            }
         }
 
         /// <summary>
         /// 保留Group,清空所有Entry
         /// </summary>
-        [MenuItem("Tools/Mark or Build/Reload Groups and Clear Entries")]
+        [MenuItem("Tools/Addressables/Mark or Build/Reload Groups and Clear Entries")]
         public static void ClearAllEntries()
         {
-            void ClearEntries(AddressableAssetGroup group)
-            {
-                if (group == null || group.entries == null)
-                {
-                    return;
-                }
-                var entryList = group.entries.ToList();
-                foreach (var entry in entryList)
-                {
-                    group.RemoveAssetEntry(entry);
-                }
-            }
-            
             ClearEntries(localStaticSeperatelyGroup);
             ClearEntries(localStaticTogetherGroup);
             ClearEntries(localStaticLabelGroup);
@@ -89,14 +71,14 @@ namespace Utility.Assetframe.Editor
             ClearEntries(duplicateAssetIsolationGroup);
         }
 
-        [MenuItem("Tools/Mark or Build/New Build(Bundle)")]
+        [MenuItem("Tools/Addressables/Mark or Build/New Build(Bundle)")]
         public static void DefaultBuildScript()
         {
             MarkAllAssets();
             AddressableAssetSettings.BuildPlayerContent();
         }
 
-        [MenuItem("Tools/Mark or Build/Clean Build Cache and New Build(Bundle)")]
+        [MenuItem("Tools/Addressables/Mark or Build/Clean Build Cache and New Build(Bundle)")]
         public static void ClearAndBuild()
         {
             CleanAllBuild();
@@ -109,40 +91,40 @@ namespace Utility.Assetframe.Editor
             AddressableAssetSettings.CleanPlayerContent(null);
             //清空build缓存
             BuildCache.PurgeCache(true);
-            //todo:是否要清空RemoteBuild
+            //todo:考虑清空RemoteBuild
         }
 
         private static int selectModeIndex = -1;
 
-        [MenuItem("Tools/Choose Play Mode Script/Use AssetDatabase")]
+        [MenuItem("Tools/Addressables/Choose Play Mode Script/Use AssetDatabase")]
         public static void UseAssetDatabase()
         {
             CheckSettingsAndGroup();
-            UnityEditor.Menu.SetChecked("Tools/Choose Play Mode Script/Use AssetDatabase", true);
-            UnityEditor.Menu.SetChecked("Tools/Choose Play Mode Script/Simulate Group", false);
-            UnityEditor.Menu.SetChecked("Tools/Choose Play Mode Script/Use ExistingBundles", false);
+            UnityEditor.Menu.SetChecked("Tools/Addressables/Choose Play Mode Script/Use AssetDatabase", true);
+            UnityEditor.Menu.SetChecked("Tools/Addressables/Choose Play Mode Script/Simulate Group", false);
+            UnityEditor.Menu.SetChecked("Tools/Addressables/Choose Play Mode Script/Use ExistingBundles", false);
             selectModeIndex = 0;
             assetSettings.ActivePlayModeDataBuilderIndex = selectModeIndex;
         }
 
-        [MenuItem("Tools/Choose Play Mode Script/Simulate Group")]
+        [MenuItem("Tools/Addressables/Choose Play Mode Script/Simulate Group")]
         public static void SimulateGroup()
         {
             CheckSettingsAndGroup();
-            UnityEditor.Menu.SetChecked("Tools/Choose Play Mode Script/Use AssetDatabase", false);
-            UnityEditor.Menu.SetChecked("Tools/Choose Play Mode Script/Simulate Group", true);
-            UnityEditor.Menu.SetChecked("Tools/Choose Play Mode Script/Use ExistingBundles", false);
+            UnityEditor.Menu.SetChecked("Tools/Addressables/Choose Play Mode Script/Use AssetDatabase", false);
+            UnityEditor.Menu.SetChecked("Tools/Addressables/Choose Play Mode Script/Simulate Group", true);
+            UnityEditor.Menu.SetChecked("Tools/Addressables/Choose Play Mode Script/Use ExistingBundles", false);
             selectModeIndex = 1;
             assetSettings.ActivePlayModeDataBuilderIndex = selectModeIndex;
         }
 
-        [MenuItem("Tools/Choose Play Mode Script/Use ExistingBundles")]
+        [MenuItem("Tools/Addressables/Choose Play Mode Script/Use ExistingBundles")]
         public static void UseExistingBundles()
         {
             CheckSettingsAndGroup();
-            UnityEditor.Menu.SetChecked("Tools/Choose Play Mode Script/Use AssetDatabase", false);
-            UnityEditor.Menu.SetChecked("Tools/Choose Play Mode Script/Simulate Group", false);
-            UnityEditor.Menu.SetChecked("Tools/Choose Play Mode Script/Use ExistingBundles", true);
+            UnityEditor.Menu.SetChecked("Tools/Addressables/Choose Play Mode Script/Use AssetDatabase", false);
+            UnityEditor.Menu.SetChecked("Tools/Addressables/Choose Play Mode Script/Simulate Group", false);
+            UnityEditor.Menu.SetChecked("Tools/Addressables/Choose Play Mode Script/Use ExistingBundles", true);
             selectModeIndex = 2;
             assetSettings.ActivePlayModeDataBuilderIndex = selectModeIndex;
         }

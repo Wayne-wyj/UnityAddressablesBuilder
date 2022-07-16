@@ -88,9 +88,9 @@ namespace InspectorHelper.Editor
                 case LabelType.SameAsFolder:
                     break;
                 case LabelType.FloderWithPrefixAndSuffix:
-                    GUIContent prefixContent = new GUIContent("Label Suffix");
+                    GUIContent prefixContent = new GUIContent("Prefix");
                     EditorGUI.PropertyField(string1Rect, prefixLabelName,prefixContent);
-                    GUIContent suffixContent = new GUIContent("Label Suffix");
+                    GUIContent suffixContent = new GUIContent("Suffix");
                     EditorGUI.PropertyField(string2Rect, suffixLabelName,suffixContent);
                     previewRect = string3Rect;
                     break;
