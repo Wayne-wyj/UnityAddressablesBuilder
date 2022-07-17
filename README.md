@@ -1,12 +1,14 @@
 # UnityAddressablesBuilder
 
+如果图片无法显示，可能需要使用typora查看该说明。
+
 该框架不会对Addressables的基础知识进行说明，主要包括以下三部分功能：
 
 ①对Addressables标记资源，BuildBundle的集成处理，
 
 ②运行时的资源加载，handler处理等
 
-③后续会新增热更新脚本。
+③热更新的控制脚本,不包含流程说明。
 
 ## 1. 配置文件
 
