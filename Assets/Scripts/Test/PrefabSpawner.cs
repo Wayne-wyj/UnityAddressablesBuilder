@@ -1,23 +1,23 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using InspectorHelper;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.Serialization;
 using Utility.Assetframe;
 
-public class Spawner : MonoBehaviour
+public class PrefabSpawner : MonoBehaviour
 {
     public SpawnType Type;
+
     public AssetReference Asset;
     private List<GameObject> gos = new List<GameObject>();
-
-    public void StartSpawn()
-    {
-        Invoke("Spawn",0f);
-    }
-
-    private void Spawn()
+    [SerializeField]
+    [ReadOnly]
+    private string assetName;
+    
+    public void Load()
     {
         if (Asset == null)
         {
@@ -26,9 +26,9 @@ public class Spawner : MonoBehaviour
 
         switch (Type)
         {
-            case SpawnType.AssetManager:
+            case SpawnType.AssetsManager:
                 
-                AssetsManager.Instance.CreatePrefabTask(Asset.editorAsset.name+".prefab", (result, data) =>
+                AssetsManager.Instance.CreatePrefabTask(assetName, (result, data) =>
                 {
                     gos.Add(result);
                 },defaultParent:transform);
@@ -61,10 +61,19 @@ public class Spawner : MonoBehaviour
             gos[i].transform.localPosition=Vector3.up * i * 1.25f;
         }
     }
+    
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        assetName = (Asset!=null && Asset.editorAsset != null) ? Asset.editorAsset.name + ".prefab" : string.Empty;
+    }
+
+
+#endif
 }
 
 public enum SpawnType
 {
     AssetReference,
-    AssetManager,
+    AssetsManager,
 }

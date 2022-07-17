@@ -53,3 +53,5 @@ UnityEngine.UI.csproj
 UnityEngine.UI.Tests.csproj
 ProjectSettings/RiderScriptEditorPersistedState.asset
 obj
+.idea
+UnityAddressablesBuilder.sln

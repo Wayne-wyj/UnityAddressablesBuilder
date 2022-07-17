@@ -11,12 +11,16 @@ namespace Utility.Assetframe.Editor
         menuName = "Addressables/AddressableBuilder/AddressableGroupPathSetting")]
     public class AddressableGroupFolderSetting : ScriptableObject
     {
+        public AddressableAssetGroup[] Groups;
         public GroupFolderSetting[] Settings;
     }
 
     [Serializable]
     public struct GroupFolderSetting
     {
+        /// <summary>
+        /// 资源加入的Group
+        /// </summary>
         public AddressableAssetGroup Group;
         public FolderSetting[] FolderSettings;
 
@@ -35,8 +39,15 @@ namespace Utility.Assetframe.Editor
 #if UNITY_EDITOR
         [Header("Only For Editor")] public string Title;
 #endif
-        [Header("Runtime")] public LabelType LabelType;
+        /// <summary>
+        /// 生成Label的类型
+        /// </summary>
+        [Header("Runtime")] 
+        public LabelType LabelType;
         public FolderData[] Folders;
+        /// <summary>
+        /// 过滤的文件后缀类型(不标记)
+        /// </summary>
         public SuffixType SuffixFilter;
 
         public List<string> GetSuffixFilter()
@@ -59,6 +70,9 @@ namespace Utility.Assetframe.Editor
     [Serializable]
     public struct FolderData : IEquatable<FolderData>
     {
+        /// <summary>
+        /// 文件夹引用
+        /// </summary>
         public FolderReference Reference;
         [HideInInspector]
         public string CustomLabelName;
@@ -110,7 +124,7 @@ namespace Utility.Assetframe.Editor
             unchecked
             {
                 var hashCode = Reference.GetHashCode();
-                hashCode = (hashCode * 397) ^ (CustomLabelName != null ? CustomLabelName.GetHashCode() : 0);
+                hashCode += (hashCode * 397) ^ (CustomLabelName != null ? CustomLabelName.GetHashCode() : 0);
                 hashCode += (hashCode * 397) ^ (PrefixLabelName != null ? PrefixLabelName.GetHashCode() : 0);
                 hashCode += (hashCode * 397) ^ (SuffixLabelName != null ? SuffixLabelName.GetHashCode() : 0);
                 return hashCode;
@@ -118,19 +132,19 @@ namespace Utility.Assetframe.Editor
         }
     }
 
+    /// <summary>
+    /// 需要过滤的后缀类型，与explorer中后缀名保持一致
+    /// </summary>
     [Flags]
     public enum SuffixType
     {
-        /// <summary>
-        /// 带Flag枚举 的默认选项，逻辑中默认设置为Prefab
-        /// </summary>
         prefab = 1<<0,
         png = 1<<1,
         mat = 1<<2,
     }
 
     /// <summary>
-    /// Label名字的类型
+    /// 获取Label名字的类型
     /// </summary>
     public enum LabelType
     {

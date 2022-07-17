@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbdc175975c8614b94f3d657de4c04d, type: 3}
   m_Name: AddressableGroupFolderSetting
   m_EditorClassIdentifier: 
+  Groups:
+  - {fileID: 11400000, guid: 360c88c9e5da5ee40817954f12245b02, type: 2}
+  - {fileID: 11400000, guid: effd178903ae90b449012691ae2829b8, type: 2}
+  - {fileID: 11400000, guid: ab7d25c01af3f2943beed29d944e8878, type: 2}
+  - {fileID: 11400000, guid: b373434debbc6c64faadd2fb2a7b6cd8, type: 2}
+  - {fileID: 11400000, guid: 5ddd085d4cdc3534e9ce7e0e71bcf8e9, type: 2}
+  - {fileID: 11400000, guid: 447b4a7ebecc52a4ba631a1e7f5aef73, type: 2}
+  - {fileID: 11400000, guid: 77f4064aca38fec48876fe266d714260, type: 2}
+  - {fileID: 11400000, guid: 9401865d79612144cad9dc18c568ba48, type: 2}
+  - {fileID: 11400000, guid: ebdab5ed0123f724f8123f470f8cc1bb, type: 2}
   Settings:
   - Group: {fileID: 11400000, guid: 360c88c9e5da5ee40817954f12245b02, type: 2}
     FolderSettings:
@@ -69,7 +79,7 @@ MonoBehaviour:
         SuffixLabelName: 
         PreviewLabelName: 
       SuffixFilter: 1
-  - Group: {fileID: 11400000, guid: b373434debbc6c64faadd2fb2a7b6cd8, type: 2}
+  - Group: {fileID: 11400000, guid: 77f4064aca38fec48876fe266d714260, type: 2}
     FolderSettings:
     - Title: Remote NoLabel
       LabelType: 0

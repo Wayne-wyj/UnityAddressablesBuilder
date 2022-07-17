@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: eb28c00e06a454c48ab73ca9241164d0
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 9d141d49cca678d49bcd8ba3dc754bf2
+    m_Address: Cube_Remote_Red.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b3d7d7549ccc0f54ea96fd1b3696b794, type: 2}
   m_SchemaSet:

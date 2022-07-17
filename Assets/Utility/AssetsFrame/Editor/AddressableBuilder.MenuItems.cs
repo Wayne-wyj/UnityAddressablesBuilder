@@ -23,6 +23,10 @@ namespace Utility.Assetframe.Editor
         {
             EditorApplication.update -= InitByUpdate;
             CheckSettingsAndGroup(true);
+            if (assetSettings == null)
+            {
+                return;
+            }
             switch (assetSettings.ActivePlayModeDataBuilderIndex)
             {
                 case 0:
@@ -58,15 +62,14 @@ namespace Utility.Assetframe.Editor
         [MenuItem("Tools/Addressables/Mark or Build/Reload Groups and Clear Entries")]
         public static void ClearAllEntries()
         {
-            ClearEntries(localStaticSeperatelyGroup);
-            ClearEntries(localStaticTogetherGroup);
-            ClearEntries(localStaticLabelGroup);
-            ClearEntries(remoteStaticSeperatelyGroup);
-            ClearEntries(remoteStaticTogetherGroup);
-            ClearEntries(remoteStaticLabelGroup);
-            ClearEntries(remoteNonStaticSeperatelyGroup);
-            ClearEntries(remoteNonStaticTogetherGroup);
-            ClearEntries(remoteNonStaticLabelGroup);
+            CheckGroupFolderSettings();
+            if (groupFolderSetting != null)
+            {
+                foreach (var group in groupFolderSetting.Groups)
+                {
+                    ClearEntries(group);
+                }
+            }
             //builtin不清除.,duplicate清除
             ClearEntries(duplicateAssetIsolationGroup);
         }

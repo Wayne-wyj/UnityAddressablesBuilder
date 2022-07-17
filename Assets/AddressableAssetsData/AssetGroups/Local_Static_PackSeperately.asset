@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: Cube_Local_Back.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 40928c8c063becb46a14fb161c65910f
+    m_Address: Search.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b3d7d7549ccc0f54ea96fd1b3696b794, type: 2}
   m_SchemaSet:

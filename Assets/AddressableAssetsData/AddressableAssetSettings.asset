@@ -71,7 +71,7 @@ MonoBehaviour:
       - m_Id: 220493c9e8f9fab4c8f1cfd742a5cda3
         m_Value: RemoteBundle
       - m_Id: 2b0e88615c8ffc24499536fb2fd7cac8
-        m_Value: http://192.168.2.2/RemoteBundle
+        m_Value: RemoteBundle
     m_ProfileEntryNames:
     - m_Id: a64ab45429bfdc04da78fa2292e9155b
       m_Name: BuildTarget

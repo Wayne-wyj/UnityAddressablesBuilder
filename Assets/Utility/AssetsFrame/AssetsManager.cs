@@ -18,12 +18,19 @@ namespace Utility.Assetframe
 
         #region Initialize
 
+        private bool initialize = false;
+        
         /// <summary>
         /// 整体资源管理器初始化
         /// </summary>
-        /// <param name="onAssetLoaded"></param>
+        /// <param name="onInitFinish">初始化完毕后回调</param>
         public void InitAssetManager(Action onInitFinish)
         {
+            if (initialize)
+            {
+                return;
+            }
+            initialize = true;
             //设置加载回调
             OnAssetsManagerReady = onInitFinish;
             //遍历Group,获取name
@@ -101,6 +108,8 @@ namespace Utility.Assetframe
                 Debug.LogError("No such Asset:" + assetName);
                 return;
             }
+            //使用基类Object，可对自动适配多种类型的资源，但对于Sprite，Object会被识别为Texture类型，无法作为Sprite使用
+            //所以之后创建了专门针对Sprite的加载方法
             AsyncOperationHandle<Object> handler= Addressables.LoadAssetAsync<Object>(assetName);
             void CustomCallback( AsyncOperationHandle<Object> target)
             {
@@ -116,7 +125,7 @@ namespace Utility.Assetframe
         }
 
         /// <summary>
-        /// 根据AssetReference创建Task,避免不同AssetReference的实例指向同个资源的问题
+        /// 根据AssetReference创建Task,避免多次调用指向同一资源的AssetReference所造成的问题
         /// </summary>
         /// <param name="reference"></param>
         /// <param name="callback"></param>
@@ -131,7 +140,7 @@ namespace Utility.Assetframe
         /// <param name="assetName"></param>
         /// <param name="callback"></param>
         /// <param name="userData"></param>
-        public void CreateSpriteTask(string assetName, OnSpriteLoaded callback, object userData)
+        public void CreateSpriteTask(string assetName, OnSpriteLoaded callback, object userData=null)
         {
             if (!ContainsAsset(assetName))
             {
@@ -154,7 +163,7 @@ namespace Utility.Assetframe
         }
         
         /// <summary>
-        /// 加载Sprite,根据AssetReference创建Task,避免不同AssetReference的实例指向同个资源的问题
+        /// 加载Sprite,根据AssetReference创建Task,避免多次调用指向同一资源的AssetReference所造成的问题
         /// </summary>
         /// <param name="reference"></param>
         /// <param name="callback"></param>

@@ -14,28 +14,9 @@ namespace Utility.Assetframe.Editor
     public static partial class AddressableBuilder
     {
         //所有Group,缓存备用
-        private static readonly string localStaticSeperatelyName = "Local_Static_PackSeperately";
-        private static AddressableAssetGroup localStaticSeperatelyGroup;
-        private static readonly string localStaticTogetherName = "Local_Static_PackTogether";
-        private static AddressableAssetGroup localStaticTogetherGroup;
-        private static readonly string localStaticLabelName = "Local_Static_PackTogetherByLabel";
-        private static AddressableAssetGroup localStaticLabelGroup;
-        private static readonly string remoteNonStaticSeperatelyName = "Remote_NonStatic_PackSeperately";
-        private static AddressableAssetGroup remoteNonStaticSeperatelyGroup;
-        private static readonly string remoteNonStaticTogetherName = "Remote_NonStatic_PackTogether";
-        private static AddressableAssetGroup remoteNonStaticTogetherGroup;
-        private static readonly string remoteNonStaticLabelName = "Remote_NonStatic_PackTogetherByLabel";
-        private static AddressableAssetGroup remoteNonStaticLabelGroup;
-        private static readonly string remoteStaticSeperatelyName = "Remote_Static_PackSeperately";
-        private static AddressableAssetGroup remoteStaticSeperatelyGroup;
-        private static readonly string remoteStaticTogetherName = "Remote_Static_PackTogether";
-        private static AddressableAssetGroup remoteStaticTogetherGroup;
-        private static readonly string remoteStaticLabelName = "Remote_Static_PackTogetherByLabel";
-        private static AddressableAssetGroup remoteStaticLabelGroup;
         private static readonly string builtInDataGroupName = "Built In Data";
         private static AddressableAssetGroup builtInDataGroup;
         private static readonly string duplicateAssetIsolationGroupName = "Duplicate Asset Isolation";
-
         /// <summary>
         /// 原生工具清理出的重复引用所在Group,需要用户自行处理
         /// </summary>
@@ -76,15 +57,6 @@ namespace Utility.Assetframe.Editor
                     AssetDatabase.LoadAssetAtPath<AddressableAssetSettings>(assetSettingsPath);
             else
                 assetSettings = AddressableAssetSettingsDefaultObject.GetSettings(false);
-            TryGetGroup(localStaticSeperatelyName, out localStaticSeperatelyGroup);
-            TryGetGroup(localStaticTogetherName, out localStaticTogetherGroup);
-            TryGetGroup(localStaticLabelName, out localStaticLabelGroup);
-            TryGetGroup(remoteNonStaticSeperatelyName, out remoteNonStaticSeperatelyGroup);
-            TryGetGroup(remoteNonStaticTogetherName, out remoteNonStaticTogetherGroup);
-            TryGetGroup(remoteNonStaticLabelName, out remoteNonStaticLabelGroup);
-            TryGetGroup(remoteStaticSeperatelyName, out remoteStaticSeperatelyGroup);
-            TryGetGroup(remoteStaticTogetherName, out remoteStaticTogetherGroup);
-            TryGetGroup(remoteStaticLabelName, out remoteStaticLabelGroup);
             TryGetGroup(duplicateAssetIsolationGroupName, out duplicateAssetIsolationGroup);
             TryGetGroup(builtInDataGroupName, out builtInDataGroup);
         }
@@ -98,7 +70,6 @@ namespace Utility.Assetframe.Editor
             {
                 return;
             }
-
             groupFolderSetting =
                 AssetDatabase.LoadAssetAtPath<AddressableGroupFolderSetting>(groupFolderSettingPath);
         }
@@ -126,6 +97,11 @@ namespace Utility.Assetframe.Editor
         /// <returns>True if a group is found.</returns>
         private static bool TryGetGroup(string groupName, out AddressableAssetGroup group)
         {
+            group = null;
+            if (assetSettings == null)
+            {
+                return false;
+            }
             if (string.IsNullOrWhiteSpace(groupName))
             {
                 group = assetSettings.DefaultGroup;
