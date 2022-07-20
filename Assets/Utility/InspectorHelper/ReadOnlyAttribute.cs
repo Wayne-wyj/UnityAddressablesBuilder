@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace InspectorHelper
+namespace Utility.InspectorHelper
 {
     public class ReadOnlyAttribute : PropertyAttribute
     {

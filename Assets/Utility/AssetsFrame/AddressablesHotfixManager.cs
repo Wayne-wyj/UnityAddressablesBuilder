@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace Utility.Assetframe
+namespace Utility.AssetsFrame
 {
     public class AddressablesHotfixManager : MonoBehaviour
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace InspectorHelper
+namespace Utility.InspectorHelper
 {
     /// <summary>
     /// This attribute can only be applied to fields because its

@@ -4,8 +4,9 @@ using InspectorHelper;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utility.InspectorHelper;
 
-namespace Utility.Assetframe.Editor
+namespace Utility.AssetsFrame.Editor
 {
     [CreateAssetMenu(fileName = "AddressableGroupPathSetting",
         menuName = "Addressables/AddressableBuilder/AddressableGroupPathSetting")]

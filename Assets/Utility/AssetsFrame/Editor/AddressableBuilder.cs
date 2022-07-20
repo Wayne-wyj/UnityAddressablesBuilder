@@ -9,7 +9,7 @@ using UnityEditor.AddressableAssets.Settings.GroupSchemas;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Utility.Assetframe.Editor
+namespace Utility.AssetsFrame.Editor
 {
     public static partial class AddressableBuilder
     {

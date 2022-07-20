@@ -1,5 +1,5 @@
 
-namespace InspectorHelper
+namespace Utility.InspectorHelper
 {
     [System.Serializable]
     public struct FolderReference

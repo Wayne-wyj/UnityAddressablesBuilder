@@ -147,15 +147,15 @@ Static指封入包内 **( Cannot Change Post Release,  [LocalBuildPath] + [Local
             Img.sprite = handle.Result;
         });
         }
-        else
+     else
+     {
+        //使用name加载
+        AssetsManager.Instance.CreateSpriteTask(assetName, (result, data) =>
         {
-             //使用name加载
-             AssetsManager.Instance.CreateSpriteTask(assetName, (result, data) =>
-             {
-                Img.sprite = result;
-             });
-        }
-        break;
+           Img.sprite = result;
+        });
+     }
+     break;
  case SpawnType.AssetReference:
       //重复加载会报错!!
       var operation=  Asset.LoadAssetAsync<Sprite>();

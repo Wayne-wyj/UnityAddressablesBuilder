@@ -1,5 +1,5 @@
 ﻿
-namespace Singleton
+namespace Utility.Singleton
 {
     public class Singleton<T> where T : new()
     {

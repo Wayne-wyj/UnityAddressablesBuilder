@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.Build.Pipeline.Utilities;
 
-namespace Utility.Assetframe.Editor
+namespace Utility.AssetsFrame.Editor
 {
     [InitializeOnLoad]
     public static partial class AddressableBuilder

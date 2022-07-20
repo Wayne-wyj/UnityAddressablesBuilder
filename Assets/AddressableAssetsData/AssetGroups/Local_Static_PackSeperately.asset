@@ -17,16 +17,16 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 33cb914e18e3fae4281c173c8d40ff98
   m_SerializeEntries:
+  - m_GUID: 40928c8c063becb46a14fb161c65910f
+    m_Address: Search.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: f07a32905d3ef3e41a349341cbc077bd
     m_Address: Cube_Local_White.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: c2cc270e11466ed43a03f40805acca36
     m_Address: Cube_Local_Back.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 40928c8c063becb46a14fb161c65910f
-    m_Address: Search.png
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

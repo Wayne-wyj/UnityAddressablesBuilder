@@ -2,7 +2,7 @@ using System;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
-using Utility.Assetframe.Editor;
+using Utility.AssetsFrame.Editor;
 
 namespace InspectorHelper.Editor
 {
@@ -32,7 +32,7 @@ namespace InspectorHelper.Editor
 
             if (folderDataType == null)
             {
-                folderDataType = assembly.GetType("Utility.Assetframe.Editor.FolderData");
+                folderDataType = assembly.GetType("Utility.AssetsFrame.Editor.FolderData");
             }
             if (getPreviewLabelName == null)
             {
