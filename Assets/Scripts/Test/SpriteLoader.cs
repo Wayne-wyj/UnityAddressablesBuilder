@@ -40,13 +40,11 @@ namespace Test
                     switch (LoadType)
                     {
                         case AssetsManagerLoadType.ByReference:
-                            //使用AssetReference加载
                             if (Async)
                             {
                                 operation=AssetsManager.Instance.CreateAssetAsync<Sprite>(Asset, result =>
                                 {
                                     Img.sprite = result;
-                                    //operation = handle;
                                 });
                             }
                             else
@@ -54,13 +52,10 @@ namespace Test
                                 operation=AssetsManager.Instance.CreateAsset<Sprite>(Asset, result =>
                                 {
                                     Img.sprite = result;
-                                    //operation = handle;
                                 });
                             }
-                          
                             break;
                         case AssetsManagerLoadType.ByName:
-                            //使用name加载
                             if (Async)
                             {
                                 operation=AssetsManager.Instance.CreateAssetAsync<Sprite>(assetName, (result) =>
