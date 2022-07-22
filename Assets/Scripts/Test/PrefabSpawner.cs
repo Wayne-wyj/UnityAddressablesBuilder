@@ -17,7 +17,6 @@ namespace Test
         public AssetsManagerLoadType AssetsManagerLoadType;
         public bool Async;
         public bool ByGroup;
-        public bool GroupSequence;
         public AssetReference Asset;
 
         public List<AssetReference> GroupAssets = new List<AssetReference>();
@@ -26,6 +25,13 @@ namespace Test
         [SerializeField] [ReadOnly] private string assetName;
 
         private AsyncOperationHandle<GameObject> operation;
+        private int frameCounter = 0;
+
+        
+        void OnGameObjectHandle(AsyncOperationHandle<GameObject> handle)
+        {
+            gos.Add(handle.Result);
+        }
 
         public void Load()
         {
@@ -34,8 +40,7 @@ namespace Test
                 return;
             }
 
-            float start = Time.realtimeSinceStartup;
-            float end = start;
+            int tempCounter = frameCounter;
             switch (SpawnType)
             {
                 case SpawnType.AssetsManager:
@@ -47,11 +52,11 @@ namespace Test
                                 AssetTaskGroup group = new AssetTaskGroup();
                                 foreach (var asset in GroupAssets)
                                 {
-                                    group.Add<GameObject>(asset, onPrefabLoad: (go) => { gos.Add(go); },
+                                    group.Add<GameObject>(asset, onPrefabLoad: OnGameObjectHandle,
                                         parent: transform);
                                 }
 
-                                group.SetIsAsync(Async).SetIsSequence(GroupSequence).Begin();
+                                group.Begin();
                             }
                             else
                             {
@@ -59,21 +64,22 @@ namespace Test
                                 {
                                     operation = AssetsManager.Instance.CreatePrefabAsync(Asset, go =>
                                     {
-                                        end = Time.realtimeSinceStartup;
                                         gos.Add(go);
+                                        Debug.Log("AssetsManager -- Reference :" + (Async ? "异步  " : "同步  ") + "耗时 :" +
+                                                  (frameCounter - tempCounter) + "帧");
                                     }, defaultParent: transform);
                                 }
                                 else
                                 {
                                     operation = AssetsManager.Instance.CreatePrefab(Asset, go =>
                                     {
-                                        end = Time.realtimeSinceStartup;
                                         gos.Add(go);
+                                        Debug.Log("AssetsManager -- Reference :" + (Async ? "异步  " : "同步  ") + "耗时 :" +
+                                                  (frameCounter - tempCounter) + "帧");
                                     }, defaultParent: transform);
                                 }
 
-                                Debug.Log("AssetsManager -- Reference :" + (Async ? "异步  " : "同步  ") + "耗时 :" +
-                                          (end - start));
+                               
                             }
 
                             break;
@@ -83,27 +89,36 @@ namespace Test
                                 AssetTaskGroup group = new AssetTaskGroup();
                                 foreach (var asset in GroupAssets)
                                 {
-                                    group.Add<GameObject>(asset, onPrefabLoad: (go) => { gos.Add(go); },
+                                    group.Add<GameObject>(asset, onPrefabLoad: (handle) =>
+                                        {
+                                            gos.Add(handle.Result);
+                                        },
                                         parent: transform);
                                 }
 
-                                group.SetIsAsync(Async).SetIsSequence(GroupSequence).Begin();
+                                group.Begin();
                             }
                             else
                             {
                                 if (Async)
                                 {
-                                    operation = AssetsManager.Instance.CreatePrefabAsync(assetName,
-                                        go => { gos.Add(go); }, defaultParent: transform);
+                                    operation = AssetsManager.Instance.CreatePrefabAsync(assetName, go =>
+                                        {
+                                            gos.Add(go);
+                                            Debug.Log("AssetsManager -- Name :" + (Async ? "异步  " : "同步  ") + "耗时 :" +
+                                                      (frameCounter - tempCounter) + "帧");
+                                        }, defaultParent: transform);
                                 }
                                 else
                                 {
-                                    operation = AssetsManager.Instance.CreatePrefab(assetName, go => { gos.Add(go); },
+                                    operation = AssetsManager.Instance.CreatePrefab(assetName, go =>
+                                        {
+                                            gos.Add(go);
+                                            Debug.Log("AssetsManager -- Name :" + (Async ? "异步  " : "同步  ") + "耗时 :" +
+                                                      (frameCounter - tempCounter) + "帧");
+                                        },
                                         defaultParent: transform);
                                 }
-
-                                Debug.Log(
-                                    "AssetsManager -- Name :" + (Async ? "异步  " : "同步  ") + "耗时 :" + (end - start));
                             }
 
                             break;
@@ -116,34 +131,18 @@ namespace Test
                     {
                         operation.Completed += (handle) =>
                         {
-                            end = Time.realtimeSinceStartup;
+                            Debug.Log("AssetReference :" + (Async ? "异步  " : "同步  ") + "耗时 :" +   (frameCounter - tempCounter) + "帧");
                             gos.Add(handle.Result);
                         };
                     }
                     else
                     {
                         operation.WaitForCompletion();
-                        end = Time.realtimeSinceStartup;
                         gos.Add(operation.Result);
+                        Debug.Log("AssetReference :" + (Async ? "异步  " : "同步  ") + "耗时 :" +   (frameCounter - tempCounter) + "帧");
                     }
-                    Debug.Log("AssetReference :" + (Async ? "异步  " : "同步  ") + "耗时 :" + (end - start));
                     break;
             }
-        }
-
-        public void ReleaseInstances()
-        {
-            foreach (var go in gos)
-            {
-                Addressables.ReleaseInstance(go);
-            }
-
-            gos.Clear();
-        }
-
-        public void ReleaseHandle()
-        {
-            Addressables.Release(operation);
         }
 
         private void Awake()
@@ -153,6 +152,7 @@ namespace Test
 
         private void Update()
         {
+            frameCounter++;
             for (int i = gos.Count - 1; i >= 0; i--)
             {
                 if (gos[i] == null)

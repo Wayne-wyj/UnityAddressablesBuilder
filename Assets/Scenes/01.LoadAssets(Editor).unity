@@ -194,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Prefab_Manager_Name
+  m_Text: Prefab Manager Name
 --- !u!222 &324905590
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 394432421}
   - component: {fileID: 394432420}
   m_Layer: 5
-  m_Name: Prefab_Manager_Name
+  m_Name: Prefab Manager Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 446706477}
   - component: {fileID: 446706476}
   m_Layer: 5
-  m_Name: Prefab_Reference
+  m_Name: Prefab Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -641,7 +641,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LoadSprite
+  m_Text: Load Sprite
 --- !u!222 &471434630
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -663,7 +663,7 @@ GameObject:
   - component: {fileID: 571418567}
   - component: {fileID: 571418566}
   m_Layer: 5
-  m_Name: Prefab_Manager_Reference
+  m_Name: Prefab Manager Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 577553044}
   - component: {fileID: 577553043}
   m_Layer: 5
-  m_Name: LoadSprite
+  m_Name: Load Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -989,7 +989,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Prefab_Reference
+  m_Text: Prefab Reference
 --- !u!222 &682231858
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1189,7 +1189,7 @@ GameObject:
   - component: {fileID: 1065783608}
   - component: {fileID: 1065783607}
   m_Layer: 5
-  m_Name: Prefab_Group
+  m_Name: Prefab Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 1096932808}
   - component: {fileID: 1096932807}
   m_Layer: 0
-  m_Name: Prefab_Manager_Reference
+  m_Name: Prefab Manager Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,7 +1343,6 @@ MonoBehaviour:
   AssetsManagerLoadType: 1
   Async: 0
   ByGroup: 0
-  GroupSequence: 0
   Asset:
     m_AssetGUID: c2cc270e11466ed43a03f40805acca36
     m_SubObjectName: 
@@ -1550,7 +1549,7 @@ GameObject:
   - component: {fileID: 1762148567}
   - component: {fileID: 1762148566}
   m_Layer: 0
-  m_Name: Prefab_Reference
+  m_Name: Prefab Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1570,9 +1569,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpawnType: 0
   AssetsManagerLoadType: 1
-  Async: 0
+  Async: 1
   ByGroup: 0
-  GroupSequence: 0
   Asset:
     m_AssetGUID: 9d141d49cca678d49bcd8ba3dc754bf2
     m_SubObjectName: 
@@ -1666,7 +1664,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Prefab_Manager_Reference
+  m_Text: Prefab Manager Reference
 --- !u!222 &1768673836
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1686,7 +1684,7 @@ GameObject:
   - component: {fileID: 1806600143}
   - component: {fileID: 1806600142}
   m_Layer: 0
-  m_Name: Prefab_Group
+  m_Name: Prefab Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1708,7 +1706,6 @@ MonoBehaviour:
   AssetsManagerLoadType: 0
   Async: 0
   ByGroup: 1
-  GroupSequence: 1
   Asset:
     m_AssetGUID: f07a32905d3ef3e41a349341cbc077bd
     m_SubObjectName: 
@@ -1754,7 +1751,7 @@ GameObject:
   - component: {fileID: 2044688646}
   - component: {fileID: 2044688645}
   m_Layer: 0
-  m_Name: Prefab_Manager_Name
+  m_Name: Prefab Manager Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1776,7 +1773,6 @@ MonoBehaviour:
   AssetsManagerLoadType: 0
   Async: 1
   ByGroup: 0
-  GroupSequence: 0
   Asset:
     m_AssetGUID: f07a32905d3ef3e41a349341cbc077bd
     m_SubObjectName: 
@@ -1870,7 +1866,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Prefab_Group
+  m_Text: Prefab Group
 --- !u!222 &2092600488
 CanvasRenderer:
   m_ObjectHideFlags: 0
